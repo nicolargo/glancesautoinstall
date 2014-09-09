@@ -5,5 +5,5 @@ A quick and no so dirty way to install [Glances](https://github.com/nicolargo/gl
 
 Just enter the following command:
 
-    curl -L https://raw.githubusercontent.com/nicolargo/glancesautoinstall/master/install.sh | /bin/bash
+    curl -L http://bit.ly/glances | /bin/bash
 
