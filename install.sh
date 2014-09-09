@@ -23,9 +23,8 @@ do_with_root() {
 }
 
 echo "Detected system:" $distrib_name $distrib_version
-if [[ $distrib_name == "Ubuntu" ]]; then
-    # Ubuntu
-    ########
+if [[ $distrib_name == "Ubuntu" || $distrib_name == "Debian" ]]; then
+    # Debian/Ubuntu
 
     # Set non interactive mode
     set -eo pipefail
