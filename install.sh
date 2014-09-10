@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 #
 # GlancesAutoInstall script
-# Version: 0.1
+# Version: 0.2
 # Author:  Nicolas Hennion (aka) Nicolargo
 #
 
-distrib_name=`lsb_release -is`
-distrib_version=`lsb_release -rs`
-
+# Execute a command as root (or sudo)
 do_with_root() {
     # already root? "Just do it" (tm).
     if [[ `whoami` = 'root' ]]; then
@@ -22,8 +20,30 @@ do_with_root() {
     fi
 }
 
-echo "Detected system:" $distrib_name $distrib_version
-if [[ $distrib_name == "Ubuntu" || $distrib_name == "Debian" ]]; then
+
+# Detect distribution name
+if [[ `which lsb_releaseX 2>/dev/null` ]]; then 
+    # lsb_release available
+    distrib_name=`lsb_release -is`
+else
+    # lsb_release not available
+    lsb_files=`ls /etc/*[-_]{release,version} 2>/dev/null`
+    for file in $lsb_files; do
+        if [[ $file =~ /etc/(.*)[-_] ]]; then
+            distrib_name=${BASH_REMATCH[1]}
+            break
+        else
+            echo "Sorry, GlancesAutoInstall script is not compliant with your system."
+            echo "Please read: https://github.com/nicolargo/glances#installation"
+            exit 1
+        fi
+    done
+fi
+
+echo "Detected system:" $distrib_name
+
+# Let's do the installation
+if [[ $distrib_name == "Ubuntu" || $distrib_name == "ubuntu" || $distrib_name == "Debian" || $distrib_name == "debian" ]]; then
     # Debian/Ubuntu
 
     # Set non interactive mode
@@ -33,18 +53,29 @@ if [[ $distrib_name == "Ubuntu" || $distrib_name == "Debian" ]]; then
     # Make sure the package repository is up to date
     do_with_root apt-get -y update
 
-    # Install prerequirement
-    do_with_root apt-get install -y python-dev python-pip git lm-sensors
-    do_with_root pip install psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz
+    # Install prerequirements
+    do_with_root apt-get install -y python-dev python-pip lm-sensors
 
-    # Install or ugrade Glances from the Pipy repository
-    if [[ -x /usr/local/bin/glances ]]; then
-        do_with_root pip install --upgrade glances
-    else
-        do_with_root pip install glances
-    fi
+elif [[ $distrib_name == "Redhat" || $distrib_name == "redhat" || $distrib_name == "Fedora" || $distrib_name == "fedora" || $distrib_name == "CentOS" || $distrib_name == "centos" ]]; then
+    # Redhat/Fedora/CentOS
+
+    # Install prerequirements
+    do_with_root yum -y install python-pip python-devel gcc lm_sensors
+
 else
     # Unsupported system
     echo "Sorry, GlancesAutoInstall script is not compliant with your system."
-    echo "Pleae read: https://github.com/nicolargo/glances#installation"
+    echo "Please read: https://github.com/nicolargo/glances#installation"
+    exit 1
+
 fi 
+
+# Install libs
+do_with_root pip install psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz
+
+# Install or ugrade Glances from the Pipy repository
+if [[ -x /usr/local/bin/glances ]]; then
+    do_with_root pip install --upgrade glances
+else
+    do_with_root pip install glances
+fi
