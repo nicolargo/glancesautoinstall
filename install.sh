@@ -71,6 +71,7 @@ else
 
 fi 
 shopt -u nocasematch
+
 # Install libs
 do_with_root pip install psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz
 
