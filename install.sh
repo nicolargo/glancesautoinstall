@@ -42,8 +42,9 @@ fi
 
 echo "Detected system:" $distrib_name
 
+shopt -s nocasematch
 # Let's do the installation
-if [[ $distrib_name == "Ubuntu" || $distrib_name == "ubuntu" || $distrib_name == "Debian" || $distrib_name == "debian" ]]; then
+if [[ $distrib_name == "ubuntu" || $distrib_name == "debian" ]]; then
     # Debian/Ubuntu
 
     # Set non interactive mode
@@ -56,7 +57,7 @@ if [[ $distrib_name == "Ubuntu" || $distrib_name == "ubuntu" || $distrib_name ==
     # Install prerequirements
     do_with_root apt-get install -y python-dev python-pip lm-sensors
 
-elif [[ $distrib_name == "Redhat" || $distrib_name == "redhat" || $distrib_name == "Fedora" || $distrib_name == "fedora" || $distrib_name == "CentOS" || $distrib_name == "centos" ]]; then
+elif [[ $distrib_name == "redhat" || $distrib_name == "fedora" || $distrib_name == "centos" ]]; then
     # Redhat/Fedora/CentOS
 
     # Install prerequirements
@@ -69,6 +70,7 @@ else
     exit 1
 
 fi 
+shopt -u nocasematch
 
 # Install libs
 do_with_root pip install psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz
