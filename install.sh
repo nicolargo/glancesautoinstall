@@ -20,7 +20,6 @@ do_with_root() {
     fi
 }
 
-
 # Detect distribution name
 if [[ `which lsb_releaseX 2>/dev/null` ]]; then 
     # lsb_release available
@@ -73,11 +72,17 @@ fi
 shopt -u nocasematch
 
 # Install libs
-do_with_root pip install psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz
+echo "Install dependancies"
+do_with_root pip install psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces
 
 # Install or ugrade Glances from the Pipy repository
 if [[ -x /usr/local/bin/glances ]]; then
+    echo "Upgrade Glances and dependancies"
+    # Install libs
+    do_with_root pip install --upgrade psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces
     do_with_root pip install --upgrade glances
 else
+    echo "Install Glances"
+    # Install Glances
     do_with_root pip install glances
 fi
