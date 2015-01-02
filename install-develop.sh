@@ -72,7 +72,7 @@ fi
 shopt -u nocasematch
 
 # Install libs
-do_with_root pip install psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces pymdstat influxdb statsd
+do_with_root pip install psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces pymdstat influxdb statsd pystache
 
 # Install or ugrade Glances from the Git develop repository
 git clone -b develop https://github.com/nicolargo/glances.git
