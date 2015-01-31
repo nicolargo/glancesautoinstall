@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # GlancesAutoInstall develop branch script
-# Version: 0.1
+# Version: 2.4
 # Author:  Nicolas Hennion (aka) Nicolargo
 #
 

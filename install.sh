@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # GlancesAutoInstall script
-# Version: 0.2
+# Version: 2.3
 # Author:  Nicolas Hennion (aka) Nicolargo
 #
 
@@ -73,13 +73,13 @@ shopt -u nocasematch
 
 # Install libs
 echo "Install dependancies"
-do_with_root pip install psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces
+do_with_root pip install psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces pymdstat influxdb statsd pystache docker-py pysnmp
 
 # Install or ugrade Glances from the Pipy repository
 if [[ -x /usr/local/bin/glances ]]; then
     echo "Upgrade Glances and dependancies"
     # Install libs
-    do_with_root pip install --upgrade psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces
+    do_with_root pip install --upgrade psutil bottle batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces pymdstat influxdb statsd pystache docker-py pysnmp
     do_with_root pip install --upgrade glances
 else
     echo "Install Glances"
