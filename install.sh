@@ -51,10 +51,10 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "debian" ]]; then
     export DEBIAN_FRONTEND=noninteractive
 
     # Make sure the package repository is up to date
-    do_with_root apt-get -y update
+    do_with_root apt-get -y --force-yes update
 
     # Install prerequirements
-    do_with_root apt-get install -y python-dev python-pip lm-sensors
+    do_with_root apt-get install -y --force-yes python-dev python-pip lm-sensors
 
 elif [[ $distrib_name == "redhat" || $distrib_name == "fedora" || $distrib_name == "centos" ]]; then
     # Redhat/Fedora/CentOS
