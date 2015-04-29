@@ -56,8 +56,8 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "debian" ]]; then
     # Install prerequirements
     do_with_root apt-get install -y --force-yes python-dev python-pip lm-sensors
 
-elif [[ $distrib_name == "redhat" || $distrib_name == "fedora" || $distrib_name == "centos" ]]; then
-    # Redhat/Fedora/CentOS
+elif [[ $distrib_name == "redhat" || $distrib_name == "fedora" || $distrib_name == "centos" || $distrib_name == "Scientific" ]]; then
+    # Redhat/Fedora/CentOS/SL
 
     # Install prerequirements
     do_with_root yum -y install python-pip python-devel gcc lm_sensors
