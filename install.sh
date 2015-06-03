@@ -14,14 +14,14 @@ do_with_root() {
         echo "sudo $*"
         sudo $*
     else
-        echo "Glances requires root privileges to install." 
+        echo "Glances requires root privileges to install."
         echo "Please run this script as root."
         exit 1
     fi
 }
 
 # Detect distribution name
-if [[ `which lsb_releaseX 2>/dev/null` ]]; then 
+if [[ `which lsb_releaseX 2>/dev/null` ]]; then
     # lsb_release available
     distrib_name=`lsb_release -is`
 else
@@ -62,13 +62,19 @@ elif [[ $distrib_name == "redhat" || $distrib_name == "fedora" || $distrib_name 
     # Install prerequirements
     do_with_root yum -y install python-pip python-devel gcc lm_sensors
 
+elif [[ $distrib_name == "arch" ]]; then
+    # Arch support
+
+    # Headers not needed for Arch, shipped with regular python packages
+    do_with_root pacman -S python-pip lm_sensors
+
 else
     # Unsupported system
     echo "Sorry, GlancesAutoInstall script is not compliant with your system."
     echo "Please read: https://github.com/nicolargo/glances#installation"
     exit 1
 
-fi 
+fi
 shopt -u nocasematch
 
 # Install libs
