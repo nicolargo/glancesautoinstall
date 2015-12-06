@@ -66,7 +66,7 @@ elif [[ $distrib_name == "arch" ]]; then
     # Arch support
 
     # Headers not needed for Arch, shipped with regular python packages
-    do_with_root pacman -S python-pip lm_sensors
+    do_with_root pacman -S python-pip lm_sensors --noconfirm
 
 else
     # Unsupported system
