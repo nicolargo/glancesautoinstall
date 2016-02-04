@@ -26,7 +26,7 @@ if [[ `which lsb_releaseX 2>/dev/null` ]]; then
     distrib_name=`lsb_release -is`
 else
     # lsb_release not available
-    lsb_files=`ls /etc/*[-_]{release,version} 2>/dev/null`
+    lsb_files=`find /etc -type f -maxdepth 1 \( ! -wholename /etc/os-release ! -wholename /etc/lsb-release -wholename /etc/\*release -o -wholename /etc/\*version \) 2> /dev/null`
     for file in $lsb_files; do
         if [[ $file =~ /etc/(.*)[-_] ]]; then
             distrib_name=${BASH_REMATCH[1]}
