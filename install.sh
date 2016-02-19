@@ -56,11 +56,17 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "debian" ]]; then
     # Install prerequirements
     do_with_root apt-get install -y --force-yes python-dev python-pip lm-sensors
 
-elif [[ $distrib_name == "redhat" || $distrib_name == "fedora" || $distrib_name == "centos" || $distrib_name == "Scientific" ]]; then
-    # Redhat/Fedora/CentOS/SL
+elif [[ $distrib_name == "redhat" || $distrib_name == "centos" || $distrib_name == "Scientific" ]]; then
+    # Redhat/CentOS/SL
 
     # Install prerequirements
     do_with_root yum -y install python-pip python-devel gcc lm_sensors
+
+elif [[ $distrib_name == "fedora" ]]; then
+    # Fedora
+
+    # Install prerequirements
+    do_with_root dnf -y install python-pip python-devel gcc lm_sensors
 
 elif [[ $distrib_name == "arch" ]]; then
     # Arch support
