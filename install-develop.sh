@@ -5,6 +5,16 @@
 # Author:  Nicolas Hennion (aka) Nicolargo
 #
 
+PYTHON_VERSION=`python -c 'import sys; print("%i" % (sys.hexversion<0x02070000))'`
+
+if [ $PYTHON_VERSION -ne 0 ]
+then
+    echo "Python 2.7 or higher is needed..."
+    exit 1
+fi
+
+exit 0
+
 # Execute a command as root (or sudo)
 do_with_root() {
     # already root? "Just do it" (tm).
