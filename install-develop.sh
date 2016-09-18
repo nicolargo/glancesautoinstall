@@ -88,7 +88,8 @@ fi
 shopt -u nocasematch
 
 # Install libs
-do_with_root pip install psutil logutils bottle requests batinfo https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
+# Glances issue #922: Do not install Sensors: https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz
+do_with_root pip install psutil logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
 
 # Install or ugrade Glances from the Git develop repository
 git clone -b develop https://github.com/nicolargo/glances.git
