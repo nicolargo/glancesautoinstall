@@ -85,14 +85,14 @@ shopt -u nocasematch
 
 # Install libs
 echo "Install dependancies"
-# Glances issue #922: Do not install Sensors: https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz
+# Glances issue #922: Do not install PySensors
 do_with_root pip install psutil logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
 
 # Install or ugrade Glances from the Pipy repository
 if [[ -x /usr/local/bin/glances || -x /usr/bin/glances ]]; then
     echo "Upgrade Glances and dependancies"
     # Install libs
-    # Glances issue #922: Do not install Sensors: https://bitbucket.org/gleb_zhulik/py3sensors/get/tip.tar.gz
+    # Glances issue #922: Do not update PySensors
     do_with_root pip install --upgrade psutil logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
     do_with_root pip install --upgrade glances
 else
