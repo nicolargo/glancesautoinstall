@@ -13,8 +13,6 @@ then
     exit 1
 fi
 
-exit 0
-
 # Execute a command as root (or sudo)
 do_with_root() {
     # already root? "Just do it" (tm).
