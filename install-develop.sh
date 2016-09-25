@@ -87,7 +87,7 @@ shopt -u nocasematch
 
 # Install libs
 # Glances issue #922: Do not install Sensors: PySensors
-do_with_root pip install psutil logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
+do_with_root pip install psutil logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir couchdb
 
 # Install or ugrade Glances from the Git develop repository
 git clone -b develop https://github.com/nicolargo/glances.git
