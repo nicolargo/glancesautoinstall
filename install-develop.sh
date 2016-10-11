@@ -29,7 +29,7 @@ do_with_root() {
 }
 
 # Detect distribution name
-if [[ `which lsb_releaseX 2>/dev/null` ]]; then
+if [[ `which lsb_release 2>/dev/null` ]]; then
     # lsb_release available
     distrib_name=`lsb_release -is`
 else
