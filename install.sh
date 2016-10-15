@@ -21,7 +21,7 @@ do_with_root() {
 }
 
 # Detect distribution name
-if [[ `which lsb_releaseX 2>/dev/null` ]]; then
+if [[ `which lsb_release 2>/dev/null` ]]; then
     # lsb_release available
     distrib_name=`lsb_release -is`
 else
@@ -86,17 +86,17 @@ shopt -u nocasematch
 # Install libs
 echo "Install dependancies"
 # Glances issue #922: Do not install PySensors
-do_with_root pip install psutil logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
+do_with_root -H pip install psutil logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
 
 # Install or ugrade Glances from the Pipy repository
 if [[ -x /usr/local/bin/glances || -x /usr/bin/glances ]]; then
     echo "Upgrade Glances and dependancies"
     # Install libs
     # Glances issue #922: Do not update PySensors
-    do_with_root pip install --upgrade psutil logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
-    do_with_root pip install --upgrade glances
+    do_with_root -H pip install --upgrade psutil logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
+    do_with_root -H pip install --upgrade glances
 else
     echo "Install Glances"
     # Install Glances
-    do_with_root pip install glances
+    do_with_root -H pip install glances
 fi
