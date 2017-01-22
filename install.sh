@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # GlancesAutoInstall script
-# Version: 2.4
+# Version: Glances 2.8
 # Author:  Nicolas Hennion (aka) Nicolargo
 #
 
@@ -83,17 +83,19 @@ else
 fi
 shopt -u nocasematch
 
-# Install libs
 echo "Install dependancies"
-# Glances issue #922: Do not install PySensors
-do_with_root pip install psutil distro logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
+
+# Glances issue #922: Do not install PySensors (SENSORS)
+DEPS="glances[ACTION,BATINFO,BROWSER,CPUINFO,CHART,DOCKER,EXPORT,FOLDERS,GPU,IP,RAID,SNMP,WEB,WIFI]"
+
+# Install libs
+do_with_root pip install $DEPS
 
 # Install or ugrade Glances from the Pipy repository
 if [[ -x /usr/local/bin/glances || -x /usr/bin/glances ]]; then
     echo "Upgrade Glances and dependancies"
-    # Install libs
-    # Glances issue #922: Do not update PySensors
-    do_with_root pip install --upgrade psutil distro logutils bottle requests batinfo zeroconf netifaces pymdstat influxdb elasticsearch potsdb statsd pystache docker-py pysnmp pika py-cpuinfo bernhard cassandra-driver scandir
+    # Upgrade libs
+    do_with_root pip install --upgrade $DEPS
     do_with_root pip install --upgrade glances
 else
     echo "Install Glances"
