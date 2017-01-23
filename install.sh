@@ -54,7 +54,7 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "debian" ]]; then
     do_with_root apt-get -y --force-yes update
 
     # Install prerequirements
-    do_with_root apt-get install -y --force-yes python-dev python-pip lm-sensors
+    do_with_root apt-get install -y --force-yes python-dev python-pip lm-sensors wireless-tools
 
 elif [[ $distrib_name == "redhat" || $distrib_name == "centos" || $distrib_name == "Scientific" ]]; then
     # Redhat/CentOS/SL
