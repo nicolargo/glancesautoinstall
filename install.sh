@@ -54,25 +54,25 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "debian" ]]; then
     do_with_root apt-get -y --force-yes update
 
     # Install prerequirements
-    do_with_root apt-get install -y --force-yes python-dev python-pip lm-sensors
+    do_with_root apt-get install -y --force-yes python-dev python-pip lm-sensors wireless-tools
 
 elif [[ $distrib_name == "redhat" || $distrib_name == "centos" || $distrib_name == "Scientific" ]]; then
     # Redhat/CentOS/SL
 
     # Install prerequirements
-    do_with_root yum -y install python-pip python-devel gcc lm_sensors
+    do_with_root yum -y install python-pip python-devel gcc lm_sensors wireless-tools
 
 elif [[ $distrib_name == "fedora" ]]; then
     # Fedora
 
     # Install prerequirements
-    do_with_root dnf -y install python-pip python-devel gcc lm_sensors
+    do_with_root dnf -y install python-pip python-devel gcc lm_sensors wireless-tools
 
 elif [[ $distrib_name == "arch" ]]; then
     # Arch support
 
     # Headers not needed for Arch, shipped with regular python packages
-    do_with_root pacman -S python-pip lm_sensors --noconfirm
+    do_with_root pacman -S python-pip lm_sensors wireless-tools  --noconfirm
 
 else
     # Unsupported system
