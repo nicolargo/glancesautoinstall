@@ -86,7 +86,7 @@ shopt -u nocasematch
 echo "Install dependancies"
 
 # Glances issue #922: Do not install PySensors (SENSORS)
-DEPS="glances[ACTION,BATINFO,BROWSER,CPUINFO,CHART,DOCKER,EXPORT,FOLDERS,GPU,IP,RAID,SNMP,WEB,WIFI]"
+DEPS="glances[action,batinfo,browser,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]"
 
 # Install libs
 do_with_root pip install $DEPS
