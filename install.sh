@@ -54,7 +54,7 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "debian" ]]; then
     do_with_root apt-get -y --force-yes update
 
     # Install prerequirements
-    do_with_root apt-get install -y --force-yes python-dev python-pip lm-sensors wireless-tools
+    do_with_root apt-get install -y --force-yes python-pip python-dev gcc lm-sensors wireless-tools
 
 elif [[ $distrib_name == "redhat" || $distrib_name == "centos" || $distrib_name == "Scientific" ]]; then
     # Redhat/CentOS/SL
@@ -72,7 +72,7 @@ elif [[ $distrib_name == "arch" ]]; then
     # Arch support
 
     # Headers not needed for Arch, shipped with regular python packages
-    do_with_root pacman -S python-pip lm_sensors wireless_tools  --noconfirm
+    do_with_root pacman -S python-pip lm_sensors wireless_tools --noconfirm
 
 else
     # Unsupported system
@@ -86,9 +86,10 @@ shopt -u nocasematch
 echo "Install dependancies"
 
 # Glances issue #922: Do not install PySensors (SENSORS)
-DEPS="glances[action,batinfo,browser,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]"
+DEPS="setuptools glances[action,batinfo,browser,cpuinfo,chart,docker,export,folders,gpu,ip,raid,snmp,web,wifi]"
 
 # Install libs
+do_with_root pip install --upgrade pip
 do_with_root pip install $DEPS
 
 # Install or ugrade Glances from the Pipy repository

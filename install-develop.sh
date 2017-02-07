@@ -62,13 +62,13 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "debian" ]]; then
     do_with_root apt-get -y update
 
     # Install prerequirements
-    do_with_root apt-get install -y git python-dev python-pip lm-sensors wireless-tools
+    do_with_root apt-get install -y git python-pip python-dev gcc lm-sensors wireless-tools
 
 elif [[ $distrib_name == "redhat" || $distrib_name == "fedora" || $distrib_name == "centos" ]]; then
     # Redhat/Fedora/CentOS
 
     # Install prerequirements
-    do_with_root yum -y install git python-pip python-devel gcc lm_sensors
+    do_with_root yum -y install git python-pip python-devel gcc lm_sensors wireless-tools
 
 elif [[ $distrib_name == "arch" ]]; then
     # Arch support
