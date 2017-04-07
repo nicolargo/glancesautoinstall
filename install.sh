@@ -70,9 +70,8 @@ elif [[ $distrib_name == "centminmod" ]]; then
     
     if [[! `which pip 2>/dev/null` ]]; then
         # install pip from easy install
-        do_with_root wget -O- https://bootstrap.pypa.io/get-pip.py | python 
-        do_with_root $(which pip) install -U pip 
-        do_with_root ln -s $(which pip) /usr/bin/pip
+        do_with_root wget -O- https://bootstrap.pypa.io/get-pip.py | python && $(which pip) install -U pip && ln -s $(which pip) /usr/bin/pip
+    fi
 
 elif [[ $distrib_name == "fedora" ]]; then
     # Fedora
