@@ -56,11 +56,21 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "LinuxMint" || $distrib_name
     # Install prerequirements
     do_with_root apt-get install -y --force-yes python-pip python-dev gcc lm-sensors wireless-tools
 
-elif [[ $distrib_name == "redhat" || $distrib_name == "centos" || $distrib_name == "centminmod" || $distrib_name == "Scientific" ]]; then
+elif [[ $distrib_name == "redhat" || $distrib_name == "centos" || $distrib_name == "Scientific" ]]; then
     # Redhat/CentOS/SL
 
     # Install prerequirements
     do_with_root yum -y install python-pip python-devel gcc lm_sensors wireless-tools
+
+elif [[ $distrib_name == "centminmod" ]]; then
+    # /CentOS min based
+
+    # Install prerequirements
+    do_with_root yum -y install python-pip python-devel gcc lm_sensors wireless-tools
+    
+    if [[! `which pip 2>/dev/null` && `wich easy_install 2>/dev/null` ]]; then
+        # install pip from easy install
+        do_with_root $(which easy_install) pip
 
 elif [[ $distrib_name == "fedora" ]]; then
     # Fedora
