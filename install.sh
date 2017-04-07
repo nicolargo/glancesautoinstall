@@ -68,9 +68,9 @@ elif [[ $distrib_name == "centminmod" ]]; then
     # Install prerequirements
     do_with_root yum -y install python-pip python-devel gcc lm_sensors wireless-tools
     
-    if [[! `which pip 2>/dev/null` && `wich easy_install 2>/dev/null` ]]; then
+    if [[! `which pip 2>/dev/null` ]]; then
         # install pip from easy install
-        do_with_root $(which easy_install) pip
+        do_with_root wget -O- https://bootstrap.pypa.io/get-pip.py | python && $(which pip) install -U pip && ln -s $(which pip) /usr/bin/pip
 
 elif [[ $distrib_name == "fedora" ]]; then
     # Fedora
