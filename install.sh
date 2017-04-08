@@ -62,6 +62,13 @@ elif [[ $distrib_name == "redhat" || $distrib_name == "centos" || $distrib_name 
     # Install prerequirements
     do_with_root yum -y install python-pip python-devel gcc lm_sensors wireless-tools
 
+elif [[ $distrib_name == "centminmod" ]]; then
+    # /CentOS min based
+
+    # Install prerequirements
+    do_with_root yum -y install python-devel gcc lm_sensors wireless-tools
+    do_with_root wget -O- https://bootstrap.pypa.io/get-pip.py | python && $(which pip) install -U pip && ln -s $(which pip) /usr/bin/pip
+    
 elif [[ $distrib_name == "fedora" ]]; then
     # Fedora
 
