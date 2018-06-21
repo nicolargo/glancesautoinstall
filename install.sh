@@ -99,7 +99,7 @@ DEPS="setuptools glances[action,batinfo,browser,cpuinfo,chart,docker,export,fold
 do_with_root pip install --upgrade pip
 do_with_root pip install $DEPS
 
-# Install or ugrade Glances from the Pipy repository
+# Install or upgrade Glances from the Pipy repository
 if [[ -x /usr/local/bin/glances || -x /usr/bin/glances ]]; then
     echo "Upgrade Glances and dependancies"
     # Upgrade libs
