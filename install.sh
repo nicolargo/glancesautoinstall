@@ -85,7 +85,7 @@ elif [[ $distrib_name == "alpine" ]]; then
     # Arch support
 
     # Headers not needed for Arch, shipped with regular python packages
-    do_with_root apk add python-pip lm_sensors wireless-tools
+    do_with_root apk add py-pip lm_sensors wireless-tools
 else
     # Unsupported system
     echo "Sorry, GlancesAutoInstall script is not compliant with your system."
