@@ -75,6 +75,12 @@ elif [[ $distrib_name == "arch" ]]; then
 
     # Headers not needed for Arch, shipped with regular python packages
     do_with_root pacman -S python-pip lm_sensors wireless_tools --noconfirm
+   
+ elif [[ $distrib_name == "alpine" ]]; then
+    # Arch support
+
+    # Headers not needed for Arch, shipped with regular python packages
+    do_with_root apk add py-pip python-dev linux-headers musl-dev lm_sensors wireless-tools
 
 else
     # Unsupported system
