@@ -62,6 +62,26 @@ elif [[ $distrib_name == "redhat" || $distrib_name == "centos" || $distrib_name 
     # Install prerequirements
     do_with_root yum -y install python-pip python-devel gcc lm_sensors wireless-tools
 
+elif [[ $distrib_name == "oracle" ]]; then
+    # Oracle EL 7, should work on 6 as well
+
+    # Enable repo
+    do_with_root yum -y install yum-utils
+    do_with_root yum-config-manager --enablerepo ol`. /etc/os-release; echo $VERSION | cut -d. -f1`_software_collections
+
+    # Install prerequirements
+    do_with_root yum -y install python27-python-pip python27-python-devel gcc lm_sensors wireless-tools
+
+    # Create glances script
+    GLANCES_BIN=/usr/bin/glances
+    echo "#!/bin/bash" > $GLANCES_BIN
+    echo ". /opt/rh/python27/enable" >> $GLANCES_BIN
+    echo "glances" >> $GLANCES_BIN
+    chmod +x $GLANCES_BIN
+
+    # Load Python27 env
+    . /opt/rh/python27/enable
+
 elif [[ $distrib_name == "centminmod" ]]; then
     # /CentOS min based
 
