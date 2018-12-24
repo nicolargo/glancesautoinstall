@@ -21,3 +21,7 @@ Available for following operating system:
 - Oracle EL
 
 Please contribute to add your favorite OS !
+
+To uninstall Glances from your system, clone the current repository and run:
+
+    ./uninstall.sh
