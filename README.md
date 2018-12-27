@@ -18,7 +18,9 @@ Available for following operating system:
 - Scientific aka SL
 - Fedora
 - Arch
+- OpenSuse
 - Oracle EL
+- Alpine
 
 Please contribute to add your favorite OS !
 

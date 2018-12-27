@@ -95,6 +95,10 @@ elif [[ $distrib_name == "arch" ]]; then
     # Headers not needed for Arch, shipped with regular python packages
     do_with_root pacman -S python-pip lm_sensors wireless_tools --noconfirm
 
+elif [[ $distrib_name == "SuSE" ]]; then
+
+    zypper --non-interactive in python-pip python-devel gcc python-curses
+
 elif [[ $distrib_name == "alpine" ]]; then
     # Arch support
 
