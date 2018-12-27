@@ -13,6 +13,7 @@ Available for following operating system:
 - Debian
 - Raspbian
 - Redhat
+- Redhat Enterprise Server
 - CentOS
 - CentOS minimal based
 - Scientific aka SL
