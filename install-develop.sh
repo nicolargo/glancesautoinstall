@@ -5,14 +5,6 @@
 # Author:  Nicolas Hennion (aka) Nicolargo
 #
 
-PYTHON_VERSION=`python -c 'import sys; print("%i" % (sys.hexversion<0x02070000))'`
-
-if [ $PYTHON_VERSION -ne 0 ]
-then
-    echo "Python 2.7 or higher is needed..."
-    exit 1
-fi
-
 # Execute a command as root (or sudo)
 do_with_root() {
     # already root? "Just do it" (tm).
@@ -32,8 +24,11 @@ do_with_root() {
 if [[ `which lsb_release 2>/dev/null` ]]; then
     # lsb_release available
     distrib_name=`lsb_release -is`
+elif [[ `which sw_vers 2>/dev/null` ]]; then
+    # sw_vers available (for Mac OS X)
+    distrib_name=`sw_vers -productName`
 else
-    # lsb_release not available
+  # try other method...
     lsb_files=`find /etc -type f -maxdepth 1 \( ! -wholename /etc/os-release ! -wholename /etc/lsb-release -wholename /etc/\*release -o -wholename /etc/\*version \) 2> /dev/null`
     for file in $lsb_files; do
         if [[ $file =~ /etc/(.*)[-_] ]]; then
@@ -119,6 +114,16 @@ elif [[ $distrib_name == "arch" ]]; then
     # Headers not needed for Arch, shipped with regular python packages
     do_with_root apk add py-pip python-dev linux-headers musl-dev lm_sensors wireless-tools
 
+elif [[ $distrib_name == "Mac OS X" ]]; then
+    # Mac OS X support
+
+    echo "Install Command lines Tools for XCode on your system"
+    do_with_root xcode-select --install
+    echo "Install Homebrew on your system"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    echo "Install Python on your system"
+    do_with_root brew install python
+
 else
     # Unsupported system
     echo "Sorry, GlancesAutoInstall develop branch script is not compliant with your system."
@@ -126,6 +131,7 @@ else
     exit 1
 
 fi
+
 shopt -u nocasematch
 
 # Install or ugrade Glances from the Git develop repository

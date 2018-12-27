@@ -8,20 +8,21 @@ Just enter the following command (with an admin account):
     curl -L https://bit.ly/glances | /bin/bash
 
 Available for following operating system:
-- Ubuntu
-- LinuxMint
+- Alpine
+- Arch
+- CentOS
+- CentOS minimal based
 - Debian
+- Fedora
+- LinuxMint
+- Mac OS X
+- OpenSuse
+- Oracle EL
 - Raspbian
 - Redhat
 - Redhat Enterprise Server
-- CentOS
-- CentOS minimal based
 - Scientific aka SL
-- Fedora
-- Arch
-- OpenSuse
-- Oracle EL
-- Alpine
+- Ubuntu
 
 Please contribute to add your favorite OS !
 
