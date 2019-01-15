@@ -52,7 +52,10 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "LinuxMint" || $distrib_name
     # Set non interactive mode
     set -eo pipefail
     export DEBIAN_FRONTEND=noninteractive
-
+    
+    # Make sure universe repo is enabled
+    do_with_root add-apt-repository universe
+    
     # Make sure the package repository is up to date
     do_with_root apt-get -y --force-yes update
 
