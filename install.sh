@@ -46,7 +46,7 @@ echo "Detected system:" $distrib_name
 
 shopt -s nocasematch
 # Let's do the installation
-if [[ $distrib_name == "ubuntu" || $distrib_name == "LinuxMint" || $distrib_name == "debian" || $distrib_name == "Raspbian" ]]; then
+if [[ $distrib_name == "ubuntu" || $distrib_name == "LinuxMint" || $distrib_name == "debian" || $distrib_name == "Raspbian" || $distrib_name == "neon" ]]; then
     # Ubuntu/Debian variants
 
     # Set non interactive mode
