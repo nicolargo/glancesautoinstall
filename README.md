@@ -13,6 +13,7 @@ Available for following operating system:
 - CentOS
 - CentOS minimal based
 - Debian
+- elementary OS
 - Fedora
 - LinuxMint
 - Mac OS X
