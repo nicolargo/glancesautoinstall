@@ -54,10 +54,10 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "LinuxMint" || $distrib_name
     export DEBIAN_FRONTEND=noninteractive
 
     # Make sure the package repository is up to date
-    do_with_root apt-get -y --force-yes update
+    do_with_root apt-get -y update
 
     # Install prerequirements
-    do_with_root apt-get install -y --force-yes python-pip python-dev gcc lm-sensors wireless-tools
+    do_with_root apt-get install -y python-pip python-dev gcc lm-sensors wireless-tools
 
 elif [[ $distrib_name == "redhat" ||  $distrib_name == "RedHatEnterpriseServer" || $distrib_name == "centos" || $distrib_name == "fedora" || $distrib_name == "Scientific" ]]; then
     # Redhat/CentOS/Fedora/SL
