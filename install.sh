@@ -134,7 +134,7 @@ fi
 
 shopt -u nocasematch
 
-echo "Install dependancies"
+echo "Install dependencies"
 
 # Glances issue #922: Do not install PySensors (SENSORS)
 DEPS="setuptools glances[action,batinfo,browser,cpuinfo,docker,export,folders,gpu,graph,ip,raid,snmp,web,wifi]"
@@ -145,7 +145,7 @@ do_with_root pip install $DEPS
 
 # Install or upgrade Glances from the Pipy repository
 if [[ -x /usr/local/bin/glances || -x /usr/bin/glances ]]; then
-    echo "Upgrade Glances and dependancies"
+    echo "Upgrade Glances and dependencies"
     # Upgrade libs
     do_with_root pip install --upgrade $DEPS
     do_with_root pip install --upgrade glances
