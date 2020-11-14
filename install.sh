@@ -9,10 +9,10 @@
 do_with_root() {
     # already root? "Just do it" (tm).
     if [[ `whoami` = 'root' ]]; then
-        $*
+        $@
     elif [[ -x /bin/sudo || -x /usr/bin/sudo ]]; then
         echo "sudo $*"
-        sudo $*
+        sudo $@
     else
         echo "Glances requires root privileges to install."
         echo "Please run this script as root."
