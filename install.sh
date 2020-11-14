@@ -46,7 +46,7 @@ echo "Detected system:" $distrib_name
 
 shopt -s nocasematch
 # Let's do the installation
-if [[ $distrib_name == "ubuntu" || $distrib_name == "LinuxMint" || $distrib_name == "debian" || $distrib_name == "Raspbian" || $distrib_name == "neon" ]]; then
+if [[ $distrib_name == "ubuntu" || $distrib_name == "LinuxMint" || $distrib_name == "debian" || $distrib_name == "Raspbian" || $distrib_name == "neon" || $distrib_name == "elementary" ]]; then
     # Ubuntu/Debian variants
 
     # Set non interactive mode
@@ -134,7 +134,7 @@ fi
 
 shopt -u nocasematch
 
-echo "Install dependancies"
+echo "Install dependencies"
 
 # Glances issue #922: Do not install PySensors (SENSORS)
 DEPS="setuptools glances[action,batinfo,browser,cpuinfo,docker,export,folders,gpu,graph,ip,raid,snmp,web,wifi]"
@@ -145,7 +145,7 @@ do_with_root pip install $DEPS
 
 # Install or upgrade Glances from the Pipy repository
 if [[ -x /usr/local/bin/glances || -x /usr/bin/glances ]]; then
-    echo "Upgrade Glances and dependancies"
+    echo "Upgrade Glances and dependencies"
     # Upgrade libs
     do_with_root pip install --upgrade $DEPS
     do_with_root pip install --upgrade glances
