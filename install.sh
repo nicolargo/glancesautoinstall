@@ -54,7 +54,7 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "LinuxMint" || $distrib_name
     export DEBIAN_FRONTEND=noninteractive
 
     # Make sure the package repository is up to date
-    do_with_root apt-get -y --force-yes update
+    #do_with_root apt-get -y --force-yes update
 
     # Install prerequirements
     do_with_root apt-get install -y --force-yes python-pip python-dev gcc lm-sensors wireless-tools
@@ -140,7 +140,7 @@ echo "Install dependancies"
 DEPS="setuptools glances[action,batinfo,browser,cpuinfo,docker,export,folders,gpu,graph,ip,raid,snmp,web,wifi]"
 
 # Install libs
-do_with_root pip install --upgrade pip
+# do_with_root pip install --upgrade pip
 do_with_root pip install $DEPS
 
 # Install or upgrade Glances from the Pipy repository

@@ -54,7 +54,7 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "LinuxMint" || $distrib_name
     export DEBIAN_FRONTEND=noninteractive
 
     # Make sure the package repository is up to date
-    do_with_root apt-get -y update
+    #do_with_root apt-get -y update
 
     # Install prerequirements
     do_with_root apt-get install -y git python-pip python-dev gcc lm-sensors wireless-tools
