@@ -12,7 +12,7 @@ do_with_root() {
         $@
     elif [[ -x /bin/sudo || -x /usr/bin/sudo ]]; then
         echo "sudo $*"
-        sudo $@
+        sudo -H $@
     else
         echo "Glances develop requires root privileges to install."
         echo "Please run this script as root."
