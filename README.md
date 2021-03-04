@@ -16,7 +16,7 @@ Available for following operating system:
 - elementary OS
 - Fedora
 - LinuxMint
-- Mac OS X
+- macOS
 - OpenSuse
 - Oracle EL
 - Raspbian

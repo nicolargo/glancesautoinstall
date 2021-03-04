@@ -25,7 +25,7 @@ if [[ `which lsb_release 2>/dev/null` ]]; then
     # lsb_release available
     distrib_name=`lsb_release -is`
 elif [[ `which sw_vers 2>/dev/null` ]]; then
-    # sw_vers available (for Mac OS X)
+    # sw_vers available (for macOS)
     distrib_name=`sw_vers -productName`
 else
   # try other method...
@@ -114,8 +114,8 @@ elif [[ $distrib_name == "arch" ]]; then
     # Headers not needed for Arch, shipped with regular python packages
     do_with_root apk add py-pip python-dev linux-headers musl-dev lm_sensors wireless-tools
 
-elif [[ $distrib_name == "Mac OS X" ]]; then
-    # Mac OS X support
+elif [[ $distrib_name == "macOS" ]]; then
+    # macOS support
 
     echo "Install Command lines Tools for XCode on your system"
     do_with_root xcode-select --install
