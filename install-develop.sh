@@ -102,14 +102,8 @@ elif [[ $distrib_name == "centminmod" ]]; then
     do_with_root yum -y install python-devel gcc lm_sensors wireless-tools
     do_with_root wget -O- https://bootstrap.pypa.io/get-pip.py | python && $(which pip) install -U pip && ln -s $(which pip) /usr/bin/pip
 
-elif [[ $distrib_name == "arch" ]]; then
-    # Arch support
-
-    # Headers not needed for Arch, shipped with regular python packages
-    do_with_root pacman -S python-pip lm_sensors wireless_tools --noconfirm
-
  elif [[ $distrib_name == "alpine" ]]; then
-    # Arch support
+    # Alpine support
 
     # Headers not needed for Arch, shipped with regular python packages
     do_with_root apk add py-pip python-dev linux-headers musl-dev lm_sensors wireless-tools
