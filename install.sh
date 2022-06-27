@@ -57,7 +57,7 @@ if [[ $distrib_name == "ubuntu" || $distrib_name == "LinuxMint" || $distrib_name
     #do_with_root apt-get -y update
 
     # Install prerequirements
-    do_with_root apt-get install -y python-pip python-dev python-docker gcc lm-sensors wireless-tools
+    do_with_root apt-get install -y python3-pip python-dev python3-docker gcc lm-sensors wireless-tools
 
 elif [[ $distrib_name == "redhat" ||  $distrib_name == "RedHatEnterprise" ||  $distrib_name == "RedHatEnterpriseServer" || $distrib_name == "centos" || $distrib_name == "fedora" || $distrib_name == "Scientific" ]]; then
     # Redhat/CentOS/Fedora/SL
