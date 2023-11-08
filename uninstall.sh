@@ -30,7 +30,7 @@ if [[ -x /usr/local/bin/glances || -x /usr/bin/glances ]]; then
     do_with_root pip uninstall $DEPS
 
     echo "Uninstall Glances"
-    do_with_root pip install uninstall glances
+    do_with_root pip uninstall glances
 else
     echo "Error: Glances is not found in your system"
     echo "Note: This script only work if you have installed Glances with the GlancesAutoInstall script"
