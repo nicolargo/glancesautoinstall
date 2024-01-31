@@ -65,6 +65,12 @@ elif [[ $distrib_name == "redhat" ||  $distrib_name == "RedHatEnterprise" ||  $d
     # Install prerequirements
     do_with_root yum -y install python-pip python-devel gcc lm_sensors wireless-tools
 
+elif [[ $distrib_name == "rocky" ]]; then
+    # Rocky Linux
+
+    # Install prerequirements
+    do_with_root yum -y install python39-pip python39-devel gcc lm_sensors
+
 elif [[ $distrib_name == "oracle" ]]; then
     # Oracle EL 7, should work on 6 as well
 
@@ -135,7 +141,11 @@ DEPS="setuptools glances[action,batinfo,browser,cpuinfo,docker,export,folders,gp
 
 # Install libs
 # do_with_root pip install --upgrade pip
-do_with_root pip install $DEPS
+if [[ $distrib_name == "rocky" ]]; then
+    do_with_root pip3.9 install $DEPS
+else
+    do_with_root pip install $DEPS
+fi
 
 # Install or upgrade Glances from the Pipy repository
 if [[ -x /usr/local/bin/glances || -x /usr/bin/glances ]]; then
