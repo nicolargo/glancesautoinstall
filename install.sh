@@ -29,13 +29,13 @@ elif [[ `which sw_vers 2>/dev/null` ]]; then
     distrib_name=`sw_vers -productName`
 else
     # try other method...
-    lsb_files=`find /etc -type f -maxdepth 1 \( ! -wholename /etc/os-release ! -wholename /etc/lsb-release -wholename /etc/\*release -o -wholename /etc/\*version \) 2> /dev/null`
+    lsb_files=`find /etc -type f,l -maxdepth 1 \( ! -wholename /etc/os-release ! -wholename /etc/lsb-release -wholename /etc/\*release -o -wholename /etc/\*version \) 2> /dev/null`
     for file in $lsb_files; do
         if [[ $file =~ /etc/(.*)[-_] ]]; then
             distrib_name=${BASH_REMATCH[1]}
             break
         else
-            echo "Sorry, GlancesAutoInstall script is not compliant with your system."
+            echo "Sorry, GlancesAutoInstall script is not compliant with your system. Could not find any /etc/<distribution>-release regular files or symbolic links"
             echo "Please read: https://github.com/nicolargo/glances#installation"
             exit 1
         fi
